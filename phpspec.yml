@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Twine
+        psr4_prefix: Twine
+        src_path: app
