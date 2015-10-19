@@ -10,7 +10,9 @@
         "dingo/api": "^0.10.0",
         "vinkla/hashids": "^2.1",
         "punic/punic": "^1.6",
-        "geekwright/po": "^1.0"
+        "geekwright/po": "^1.0",
+        "sabre/xml": "^1.2",
+        "nikic/php-parser": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -1,0 +1,10 @@
+{
+	"search_string": {
+		"message": "hello%20world",
+		"description": "The string we search for. Put %20 between words that go together."
+	},
+	"another_string": {
+		"message": "more stuff",
+		"description": "This is a more stuff string."
+	},
+}

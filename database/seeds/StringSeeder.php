@@ -29,6 +29,7 @@ class StringSeeder extends Seeder
 		foreach ($strings as $key => $value) {
 			$string = [
 				'key'        => $key,
+				'resource'   => 'basic',
 				'value'      => $value,
 				'locale'     => 'en',
 				'created_by' => 1,

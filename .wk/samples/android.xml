@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="string_name">text_string</string>
+	<string-array name="string_array_name">
+		<item>text_string 1</item>
+		<item>text_string 2</item>
+		<item>text_string 3</item>
+	</string-array>
+	<plurals name="numberOfSongsAvailable">
+		<item quantity="one">Znaleziono %d piosenkę.</item>
+		<item quantity="few">Znaleziono %d piosenki.</item>
+		<item quantity="other">Znaleziono %d piosenek.</item>
+	</plurals>
+</resources>

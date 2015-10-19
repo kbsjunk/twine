@@ -6,9 +6,11 @@ RESX
 
 MIF
 Adobe Framemaker Files (.mif)
+http://docs.transifex.com/formats/adobe-mif/
 
 ANDROID
 Android String Resources (.xml)
+http://docs.transifex.com/formats/android/
 
 PLIST
 Apple PLIST files (.plist)
@@ -90,6 +92,9 @@ XHTML files (.xhtml)
 
 XLIFF
 XLIFF file (.xlf, .xliff, .xml)
+[https://en.wikipedia.org/wiki/XLIFF]
+[https://github.com/tableau-mkt/eggs-n-cereal]
+[https://github.com/Regelwerk/TranslationBundle]
 
 PROPERTIESXML
 XML Properties Files (.xml)

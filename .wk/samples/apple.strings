@@ -1,0 +1,6 @@
+/* A comment */
+"Insert Element" = "Insert Element";
+"ErrorString_1" = "An unknown error occurred.";
+"Windows must have at least %d columns and %d rows." =
+"Les fenêtres doivent être composes au minimum de %d colonnes et %d lignes.";
+"File %@ not found." = "Le fichier %@ n’existe pas.";
