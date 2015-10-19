@@ -6,15 +6,15 @@ class String extends AbstractModel
 {
 	
 	protected $casts = [
-		'value' => 'json',	
+		// 'value' => 'json',
 	];
 	
 	protected $fillable = [
 		'locale',
-		'resource',
+		'uri',
 		'key',
 		'value',
-		'type',
+		'plural',
 		'source_id',
 	];
 	
@@ -22,4 +22,37 @@ class String extends AbstractModel
 	{
 		return $this->belongsTo('Twine\Source');
 	}
+
+	// public function setUriAttribute($uri)
+	// {
+	// 	$this->attributes['uri'] = self::makeUri($uri);
+	// }
+
+	// public function getUriAttribute()
+	// {
+	// 	$uri = explode('.', $getAttributeFromArray('uri'));
+
+	// 	$uri = array_map(function($i) {
+	// 		return str_replace('\¤', '.', $i);
+	// 	}, $uri);
+
+	// 	return $uri;
+	// }
+
+	// public function getUriRawAttribute()
+	// {
+	// 	return $this->getAttributeFromArray('uri');
+	// }
+
+	public static function makeUri($uri)
+	{
+		$uri = (array) $uri;
+
+		$uri = array_map(function($i) {
+			return str_replace('.', '\¤', $i);
+		}, $uri);
+
+		return implode('.', $uri);
+	}
+
 }

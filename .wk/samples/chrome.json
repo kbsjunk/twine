@@ -1,10 +1,29 @@
 {
-	"search_string": {
-		"message": "hello%20world",
-		"description": "The string we search for. Put %20 between words that go together."
-	},
-	"another_string": {
-		"message": "more stuff",
-		"description": "This is a more stuff string."
-	},
+  "prompt_for_name": {
+    "message": "What's your name?",
+    "description": "Ask for the user's name"
+  },
+  "hello": {
+    "message": "Hello, $USER$",
+    "description": "Greet the user",
+    "placeholders": {
+      "user": {
+        "content": "$1",
+        "example": "Cira"
+      }
+    }
+  },
+  "bye": {
+    "message": "Goodbye, $USER$. Come back to $OUR_SITE$ soon!",
+    "description": "Say goodbye to the user",
+    "placeholders": {
+      "our_site": {
+        "content": "Example.com",
+      },
+      "user": {
+        "content": "$1",
+        "example": "Cira"
+      }
+    }
+  }
 }

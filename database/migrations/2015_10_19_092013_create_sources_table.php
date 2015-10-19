@@ -15,11 +15,13 @@ class CreateSourcesTable extends Migration
         Schema::create('sources', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('locale');
-			$table->string('format');
-			$table->string('path');
+			$table->string('format')->default('twine');
+			$table->string('path')->nullable();
             $table->timestamps();
             $table->softDeletes();
 			$table->unsignedInteger('created_by');
+
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
         });
     }
 

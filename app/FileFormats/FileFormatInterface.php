@@ -4,7 +4,7 @@ namespace Twine\FileFormats;
 
 interface FileFormatInterface
 {
-	public function read($file);
+	public function read($path);
 	
-	public function write($file, $data);
+	public function write($path);
 }

@@ -4,13 +4,13 @@ namespace Twine\FileFormats;
 use Sabre\Xml\Reader;
 use Sabre\Xml\Writer;
 
-abstract class AbstractXML extends AbstractFileFormat
+abstract class AbstractXml extends AbstractFileFormat
 {
-	protected $parsed;
+	protected $format = 'abstractXml';
 	
-	public function readXml($path)
+	public function read($path)
 	{
-		$this->loadPath($path);
+		parent::read($path);
 		
 		$reader = new Reader;
 		
@@ -21,7 +21,7 @@ abstract class AbstractXML extends AbstractFileFormat
 		return $this;
 	}
 	
-	public function writeXml($path, $xml)
+	public function write()
 	{
 		$writer = new Writer;
 	}

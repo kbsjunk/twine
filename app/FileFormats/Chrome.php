@@ -2,9 +2,9 @@
 
 namespace Twine\FileFormats;
 
-class Android extends AbstractXml implements FileFormatInterface
+class Chrome extends AbstractJson implements FileFormatInterface
 {
-	protected $format = 'android';
+	protected $format = 'chrome';
 
 	public function read($path) {
 
@@ -12,7 +12,7 @@ class Android extends AbstractXml implements FileFormatInterface
 		
 		$this->makeSource();
 		
-		$strings = $this->parsed['value'];
+		$strings = $this->parsed;
 		
 		foreach ($strings as $string)
 		{

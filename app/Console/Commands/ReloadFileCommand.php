@@ -5,18 +5,19 @@ namespace Twine\Console\Commands;
 use Illuminate\Console\Command;
 use Twine\FileFormats\Factory;
 
-class LoadFileCommand extends Command
+use Twine\Source;
+
+class ReloadFileCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'twine:load
-							{format : The file format.}
-							{locale : The file locale.}
-							{path : The path to the file to load (relative to base_path()).}
-							';
+    protected $signature = 'twine:reload
+    {source : The database ID of the source to reload.}
+    {path : The path to the file to load (relative to base_path()).}
+    ';
 
     /**
      * The console command description.
@@ -42,15 +43,19 @@ class LoadFileCommand extends Command
      */
     public function handle()
     {
-        $format = $this->argument('format');
+
+        $source = Source::find($this->argument('source'));
+
         $path = $this->argument('path');
-        $locale = $this->argument('locale');
-		
-		$loader = Factory::make($format, $locale);
-		
+        $format = $source->format;
+        $locale = $source->locale;
+        
+        $loader = Factory::make($format, $locale);
+        
+        $loader->setSource($source);
         $output = $loader->read($path);
-		
-		dd($output);
-		
+        
+        dd($output);
+        
     }
 }

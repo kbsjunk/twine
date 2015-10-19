@@ -8,6 +8,8 @@ use Twine\String;
 abstract class AbstractFileFormat
 {
 	protected $path;
+	protected $locale;
+	protected $format;
 	protected $contents;
 	protected $parsed;
 	protected $source;
@@ -35,7 +37,19 @@ abstract class AbstractFileFormat
 		return $this;
 	}
 	
-	protected function loadPath($path)
+	public function getSource()
+	{
+		return $this->source;
+	}
+	
+	public function setSource(Source $source)
+	{
+		$this->source = $source;
+		
+		return $this;
+	}
+	
+	protected function read($path)
 	{
 		$this->setPath($path);
 		$this->contents = file_get_contents($this->path);
@@ -43,28 +57,40 @@ abstract class AbstractFileFormat
 		return $this;
 	}
 	
-	protected function savePath($path, $contents)
-	{
-		$this->setPath($path);
-		$this->contents = $contents;
+	// protected function write($path, $contents)
+	// {
+	// 	$this->setPath($path);
+	// 	$this->contents = $contents;
 		
-		file_put_contents($this->path, $contents);
+	// 	file_put_contents($this->path, $contents);
+		
+	// 	return $this;
+	// }
+	
+	protected function makeSource()
+	{
+		if (empty($this->source)) {
+			
+			$locale = $this->locale;
+			$format = $this->format;
+			$path = $this->path;
+
+			$this->source = Source::create(compact('locale', 'format', 'path'));
+		}
 		
 		return $this;
 	}
 	
-	protected function makeSource($locale, $format, $path)
-	{
-		$this->source = Source::create(compact('locale', 'format', 'path'));
-		
-		return $this;
-	}
-	
-	protected function makeString($locale, $resource, $key, $value, $type = 'string')
+	protected function makeString($uri, $key, $value, $plural = null)
 	{
 		$source_id = $this->source->id;
+		$locale = $this->locale;
+		$uri = String::makeUri($uri);
+
+		$string = String::firstOrNew(compact('locale', 'uri', 'source_id'));
+		$string->fill(compact('key', 'value', 'plural'))->save();
 		
-		$this->strings[] = String::create(compact('locale', 'resource', 'key', 'value', 'type', 'source_id'));
+		$this->strings[] = $string;
 		
 		return $this;
 	}
