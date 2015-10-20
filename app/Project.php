@@ -14,10 +14,16 @@ class Project extends Model
 		'branch',
 		'format',
 		'url',
+		'repository_id',
 	];
 	
 	public function sources()
 	{
 		return $this->hasMany('Twine\Source');
+	}
+
+	public function getNameBranchAttribute()
+	{
+		return "{$this->name}.{$this->branch}";
 	}
 }

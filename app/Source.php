@@ -12,7 +12,9 @@ class Source extends Model
 	protected $fillable = [
 		'locale',
 		'format',
+		'url',
 		'path',
+		'project_id',
 	];
 	
 	public function strings()

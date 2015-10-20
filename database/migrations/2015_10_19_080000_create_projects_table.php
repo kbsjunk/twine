@@ -15,7 +15,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('name')->index();
-			$table->string('branch')->default('master')->index();
+			$table->string('branch')->default('master')->index()->nullable();
 			$table->string('format')->default('twine');
 			$table->string('url')->nullable();
             $table->timestamps();
@@ -25,7 +25,7 @@ class CreateProjectsTable extends Migration
 			$table->unsignedInteger('repository_id')->nullable();
 
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
-            $table->foreign('repository_id')->references('id')->on('repositories')->onDelete('restrict');
+            $table->foreign('repository_id')->references('id')->on('repositories')->onDelete('cascade');
 			$table->unique(['name', 'branch', 'repository_id']);
         });
     }

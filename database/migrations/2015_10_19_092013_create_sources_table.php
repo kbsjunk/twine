@@ -17,6 +17,7 @@ class CreateSourcesTable extends Migration
 			$table->string('name')->index();
 			$table->string('locale');
 			$table->string('format')->default('twine');
+            $table->string('url')->nullable();
 			$table->string('path')->nullable();
             $table->timestamps();
             $table->softDeletes();

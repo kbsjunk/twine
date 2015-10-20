@@ -14,6 +14,10 @@ class Repository extends Model
 		'format',
 		'url',
 	];
+
+	protected $dates = [
+		'crawled_at'
+	];
 	
 	public function projects()
 	{

@@ -7,16 +7,17 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Goutte\Client;
 use Illuminate\Database\Eloquent\Model;
+use Twine\Console\UsesOutput;
+use Goutte\Client;
 
 abstract class AbstractCrawlerJob extends Job implements SelfHandling, ShouldQueue
 {
-    use InteractsWithQueue, SerializesModels;
-	
-	protected $client;
-	protected $crawler;
-	protected $model;
+    use InteractsWithQueue, SerializesModels, UsesOutput;
+
+    protected $client;
+    protected $crawler;
+    protected $model;
 
     /**
      * Create a new job instance.
@@ -35,10 +36,17 @@ abstract class AbstractCrawlerJob extends Job implements SelfHandling, ShouldQue
      */
     public function handle(Client $client)
     {
+
+        $this->useOutput();
+
         $this->client = $client;
-		$this->model = $this->model->fresh();
-		
-		$this->crawler = $this->client->request('GET', $this->model->url);		
-		$this->process();
+        $this->model = $this->model->fresh();
+
+        $this->crawler = $this->client->request('GET', $this->model->url);      
+        $this->model->crawled_at = $this->model->freshTimestamp();
+        $this->model->save();
+        
+        $this->process();
+        
     }
 }

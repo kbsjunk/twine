@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 use Auth;
 
+use Twine\Repository;
+use Twine\Project;
 use Twine\Source;
 use Twine\String;
 use Twine\User;
@@ -22,12 +24,20 @@ class AppServiceProvider extends ServiceProvider
     {
         $user = Auth::user() ?: User::whereEmail('system@twine')->first();
 
-        String::creating(function ($string) use ($user) {
-            $string->created_by = $user->id;
+        Repository::creating(function ($model) use ($user) {
+            $model->created_by = $user->id;
         });
 
-        Source::creating(function ($source) use ($user) {
-            $source->created_by = $user->id;
+        Project::creating(function ($model) use ($user) {
+            $model->created_by = $user->id;
+        });
+
+        String::creating(function ($model) use ($user) {
+            $model->created_by = $user->id;
+        });
+
+        Source::creating(function ($model) use ($user) {
+            $model->created_by = $user->id;
         });
     }
 

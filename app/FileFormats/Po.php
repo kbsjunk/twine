@@ -7,9 +7,9 @@ use Geekwright\Po\PoTokens;
 use Geekwright\Po\Exceptions\UnrecognizedInputException;
 use Geekwright\Po\Exceptions\FileNotReadableException;
 
-class Gettext extends AbstractFileFormat
+class Po extends AbstractFileFormat
 {
-	protected $format = 'gettext';
+	protected $format = 'po';
 	
 	public function read($path)
 	{

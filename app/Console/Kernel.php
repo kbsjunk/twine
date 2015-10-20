@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \Twine\Console\Commands\LoadFileCommand::class,
         \Twine\Console\Commands\ReloadFileCommand::class,
+        \Twine\Console\Commands\RepositoryGetCommand::class,
     ];
 
     /**

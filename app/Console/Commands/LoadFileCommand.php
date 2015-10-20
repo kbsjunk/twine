@@ -5,6 +5,7 @@ namespace Twine\Console\Commands;
 use Illuminate\Console\Command;
 use Twine\FileFormats\Factory;
 
+
 class LoadFileCommand extends Command
 {
     /**
