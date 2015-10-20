@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSourcesTable extends Migration
+class CreateRepositoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,19 +12,16 @@ class CreateSourcesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sources', function (Blueprint $table) {
+        Schema::create('repositories', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('name')->index();
-			$table->string('locale');
-			$table->string('format')->default('twine');
-			$table->string('path')->nullable();
+			$table->string('format')->default('apache');
+			$table->string('url')->nullable();
             $table->timestamps();
             $table->softDeletes();
 			$table->dateTime('crawled_at')->nullable();
 			$table->unsignedInteger('created_by');
-			$table->unsignedInteger('project_id')->nullable();
 
-			$table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
         });
     }
@@ -36,6 +33,6 @@ class CreateSourcesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sources');
+        Schema::drop('repositories');
     }
 }

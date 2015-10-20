@@ -1,5 +1,7 @@
 [https://github.com/translate/translate]
 [https://github.com/kitbs/open-tran/tree/master/import]
+[http://unicode.org/reports/tr35/tr35-numbers.html#Language_Plural_Rules]
+[http://cldr.unicode.org/index/cldr-spec/plural-rules]
 
 RESJSON
 .NET JSON Resource Files (.resjson)
@@ -9,11 +11,11 @@ RESX
 
 MIF
 Adobe Framemaker Files (.mif)
-http://docs.transifex.com/formats/adobe-mif/
+[http://docs.transifex.com/formats/adobe-mif/]
 
 ANDROID
 Android String Resources (.xml)
-http://docs.transifex.com/formats/android/
+[http://docs.transifex.com/formats/android/]
 
 PLIST
 Apple PLIST files (.plist)
