@@ -14,25 +14,17 @@ class Chrome extends AbstractJson implements FileFormatInterface
 		
 		$strings = $this->parsed;
 		
-		foreach ($strings as $string)
+		foreach ($strings as $key => $string)
 		{
-			if ($string['name'] == '{}string')
+			if (is_array($string['message']))
 			{
-				$this->makeString($string['attributes']['name'], $string['attributes']['name'], $string['value']);
-			}
-			elseif ($string['name'] == '{}string-array')
-			{
-				$i = 0;
-				foreach ($string['value'] as $value) {
-					$this->makeString([$string['attributes']['name'], $i], $string['attributes']['name'], $value['value']);
-					$i++;
+				foreach ($string['message'] as $i => $value) {
+					$this->makeString([$key, $i], $key, $value);
 				}
 			}
-			elseif ($string['name'] == '{}plurals')
+			else
 			{
-				foreach ($string['value'] as $value) {
-					$this->makeString([$string['attributes']['name'], $value['attributes']['quantity']], $string['attributes']['name'], $value['value'], $value['attributes']['quantity']);
-				}
+				$this->makeString($key, $key, $string['message'], null, @$string['description'], @$string['placeholders']);
 			}
 		}
 		
@@ -43,7 +35,7 @@ class Chrome extends AbstractJson implements FileFormatInterface
 	}
 	
 	// public function write($file, $data) {
-		
+
 	// }
 	
 }

@@ -8,14 +8,14 @@ abstract class AbstractJson extends AbstractFileFormat
 	
 	public function read($path)
 	{
-		$this->read($path);
+		parent::read($path);
 		
 		$this->parsed = json_decode($this->contents, true);
 		
 		return $this;
 	}
 	
-	public function write($path, $contents)
+	public function write($path)
 	{
 		// $this->contents;
 	}

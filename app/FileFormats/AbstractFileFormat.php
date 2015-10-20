@@ -36,6 +36,11 @@ abstract class AbstractFileFormat
 		
 		return $this;
 	}
+
+	public function getPath()
+	{
+		return $this->path;
+	}
 	
 	public function getSource()
 	{
@@ -53,7 +58,7 @@ abstract class AbstractFileFormat
 	{
 		$this->setPath($path);
 		$this->contents = file_get_contents($this->path);
-		
+
 		return $this;
 	}
 	
@@ -81,14 +86,14 @@ abstract class AbstractFileFormat
 		return $this;
 	}
 	
-	protected function makeString($uri, $key, $value, $plural = null)
+	protected function makeString($uri, $key, $value, $plural = null, $comment = null, $placeholders = null)
 	{
 		$source_id = $this->source->id;
 		$locale = $this->locale;
 		$uri = String::makeUri($uri);
 
 		$string = String::firstOrNew(compact('locale', 'uri', 'source_id'));
-		$string->fill(compact('key', 'value', 'plural'))->save();
+		$string->fill(compact('key', 'value', 'plural', 'comment', 'placeholders'))->save();
 		
 		$this->strings[] = $string;
 		

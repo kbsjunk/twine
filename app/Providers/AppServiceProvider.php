@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         String::creating(function ($string) use ($user) {
             $string->created_by = $user->id;
         });
+
         Source::creating(function ($source) use ($user) {
             $source->created_by = $user->id;
         });

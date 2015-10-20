@@ -18,13 +18,10 @@ class SourceStringSeeder extends Seeder
 		DB::table('sources')->delete();
 		DB::table('strings')->delete();
 
-		$user = User::whereEmail('system@twine')->first();
-
 		$source = [
 			'locale'     => 'en',
 			'format'     => 'twine',
 			'path'       => null,
-			'created_by' => $user->id,
 		];
 
 		$source = Source::create($source);
@@ -47,7 +44,6 @@ class SourceStringSeeder extends Seeder
 				'value'      => $value,
 				'locale'     => 'en',
 				'source_id'  => $source->id,
-				'created_by' => $user->id,
 			];
 			
 			$string = String::create($string);

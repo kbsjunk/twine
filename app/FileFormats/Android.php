@@ -22,10 +22,8 @@ class Android extends AbstractXml implements FileFormatInterface
 			}
 			elseif ($string['name'] == '{}string-array')
 			{
-				$i = 0;
-				foreach ($string['value'] as $value) {
+				foreach ($string['value'] as $i => $value) {
 					$this->makeString([$string['attributes']['name'], $i], $string['attributes']['name'], $value['value']);
-					$i++;
 				}
 			}
 			elseif ($string['name'] == '{}plurals')

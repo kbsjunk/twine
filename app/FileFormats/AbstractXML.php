@@ -21,7 +21,7 @@ abstract class AbstractXml extends AbstractFileFormat
 		return $this;
 	}
 	
-	public function write()
+	public function write($path)
 	{
 		$writer = new Writer;
 	}

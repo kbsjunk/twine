@@ -32,6 +32,11 @@ abstract class AbstractModel extends Model
 		return $query->find($id);
 	}
 	
+    public function createdBy()
+	{
+		return $this->belongsTo('Twine\User', 'created_by');
+	}
+	
 /* 	public function getHashidAttribute()
 	{
 		return Hashids::encode($this->id, Auth::user()->id);

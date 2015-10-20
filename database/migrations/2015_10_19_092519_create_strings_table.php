@@ -15,11 +15,12 @@ class CreateStringsTable extends Migration
         Schema::create('strings', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('locale');
-			$table->string('uri')->nullable();
+			$table->string('uri');
 			$table->string('key');
 			$table->string('value');
 			$table->string('plural')->nullable();
-            $table->text('comment');
+            $table->text('comment')->nullable();
+            $table->text('placeholders')->nullable();
             $table->timestamps();
             $table->softDeletes();
 			$table->unsignedInteger('created_by');

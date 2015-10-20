@@ -6,7 +6,7 @@ class String extends AbstractModel
 {
 	
 	protected $casts = [
-		// 'value' => 'json',
+		'placeholders' => 'json',
 	];
 	
 	protected $fillable = [
@@ -15,6 +15,7 @@ class String extends AbstractModel
 		'key',
 		'value',
 		'plural',
+		'placeholders',
 		'source_id',
 	];
 	

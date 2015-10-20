@@ -1,3 +1,6 @@
+[https://github.com/translate/translate]
+[https://github.com/kitbs/open-tran/tree/master/import]
+
 RESJSON
 .NET JSON Resource Files (.resjson)
 
@@ -53,6 +56,7 @@ Mozilla DTD File (.dtd)
 
 MOZILLAPROPERTIES
 Mozilla PROPERTIES file (.properties)
+[https://developer.mozilla.org/en-US/docs/Mozilla/Localization/Localization_and_Plurals]
 
 PHP_ALT_ARRAY
 PHP Alternative Array Files (.php)
@@ -68,6 +72,11 @@ PHP INI Files (.ini)
 
 PO
 PO File (.po, .pot)
+[https://l10n.gnome.org/module/]
+[https://github.com/omaciel/pylyglot]
+[https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms]
+[https://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html]
+[http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html]
 
 TXT
 Plain text files (.txt)
